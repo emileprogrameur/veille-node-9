@@ -7,19 +7,18 @@ app.use(express.static('public'))
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}))
 
-app.get('/', function (req, res) {
-  let cursor = db.collection('adresse').find().toArray(function(err, resultat){
+app.get('/', (req, res) => {
+  res.render('gabarit.ejs')  
+})
+
+app.get('/adresses', (req, res) => {
+	let cursor = db.collection('adresse').find().toArray(function(err, resultat) {
  	if (err) return console.log(err)
  	console.log(JSON.stringify(resultat))
  	// transfert du contenu vers la vue index.ejs (renders)
  	// affiche le contenu de la BD          
-  res.render('gabarit.ejs', {adresses: resultat})  
+ 	res.render('gabaritAdresses.ejs', {adresses: resultat})  
   })
-})
-
-app.get('/formulaire', function (req, res) {
- console.log(__dirname);
- res.render ('composants/formulaire.ejs')
 })
 
 app.post('/ajouter', (req, res) => {
