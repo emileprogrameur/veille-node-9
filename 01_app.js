@@ -53,7 +53,8 @@ app.get('/trier/:clef/:ordre', (req, res) => {
 	let ordre = (req.params.ordre == 'asc' ? 1 : -1)
   db.collection('adresse').find().sort(clef, ordre).toArray((err, resultat) => {
   	if (err) return console.log(err)
-  	res.redirect('/adresses')
+  	ordre = (req.params.ordre == 'asc' ? 'des' : 'asc')
+  	res.render('gabaritAdresses.ejs', {adresses: resultat, clef, ordre}) 
   })
 })
 
