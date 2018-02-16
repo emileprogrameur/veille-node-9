@@ -6,9 +6,9 @@
 			<tr>
 				<% noLigne++ %>
 				<% for(elem in elm) {%>
-					<td><%= elem %></td>
+					<td><a href="/trier/<%= elem %>/asc"><%= elem %></a></td>
 				<%}%>
-				<td><a href=""><i class="fas fa-user-plus"></i></i></a></td>
+				<td><a href="/formulaire"><i class="fas fa-user-plus"></i></i></a></td>
 			</tr>
 		<% } %>
 
@@ -18,6 +18,13 @@
 			<%}%>
 			<td><a href=""><i class="far fa-save"></i></a></td>
 			<td><a href="/detruire/<%= elm._id %>"><i class="fas fa-eraser"></i></a></td>
+		</tr>
+	<% } %>
+
+	<% if (adresses.length <= 0) { %>
+		<tr>
+			<td><span>Il n'y a pas de membres inscrit. Voulez vous ajouter un membre ?</span></td>
+			<td><a href="/formulaire"><i class="fas fa-user-plus"></i></i></a></td>
 		</tr>
 	<% } %>
 </table>

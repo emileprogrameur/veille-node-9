@@ -24,12 +24,16 @@ app.get('/adresses', (req, res) => {
   })
 })
 
+/*------------------Formulaire------------------*/
+app.get('/formulaire', (req, res) => {
+  res.render('gabaritFormulaire.ejs')  
+})
+
 /*------------------Ajouter------------------*/
 app.post('/ajouter', (req, res) => {
 	db.collection('adresse').save(req.body, (err, result) => {
  		if (err) return console.log(err)
- 		console.log('sauvegarder dans la BD')
- 		res.redirect('/')
+ 		res.redirect('/adresses')
  	})
 })
 
@@ -39,6 +43,16 @@ app.get('/detruire/:id', (req, res) => {
   db.collection('adresse').findOneAndDelete({_id: ObjectID(id)}, (err, resultat) => {
   	if (err) return console.log(err)
   	console.log(id)
+  	res.redirect('/adresses')
+  })
+})
+
+/*------------------Trier------------------*/
+app.get('/trier/:clef/:ordre', (req, res) => {
+	let clef = req.params.clef
+	let ordre = (req.params.ordre == 'asc' ? 1 : -1)
+  db.collection('adresse').find().sort(clef, ordre).toArray((err, resultat) => {
+  	if (err) return console.log(err)
   	res.redirect('/adresses')
   })
 })
