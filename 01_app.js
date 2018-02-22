@@ -58,6 +58,11 @@ app.get('/trier/:clef/:ordre', (req, res) => {
   })
 })
 
+/*------------------Modifier------------------*/
+app.get('/modifier', (req, res) => {
+	
+})
+
 
 /*----------------------Connexion à MongoDB et au serveur Node.js-----------------------*/
 let db // variable qui contiendra le lien sur la BD
