@@ -68,6 +68,8 @@ app.post('/modifier', (req, res) => {
  		})
 })
 
+/*------------------Peupler------------------*/
+
 
 /*----------------------Connexion à MongoDB et au serveur Node.js-----------------------*/
 let db // variable qui contiendra le lien sur la BD
