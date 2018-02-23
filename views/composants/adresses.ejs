@@ -11,6 +11,7 @@
 		objTri[clef] = ordre
 	}
 %>
+
 <table class="tableau">
 	<% let noLigne = 0 %>
 
@@ -18,6 +19,7 @@
 		<% if (noLigne==0) { %>
 			<tr>
 				<% noLigne++ %>
+				<td style="display: none;"><a href="/trier/nom/<%= objTri._id %>">id</a></td>
 				<td><a href="/trier/nom/<%= objTri.nom %>">nom</a></td>
 				<td><a href="/trier/prenom/<%= objTri.prenom %>">prenom</a></td>
 				<td><a href="/trier/telephone/<%= objTri.telephone %>">telephone</a></td>
@@ -27,11 +29,12 @@
 		<% } %>
 
 		<tr>
+			<td contenteditable='true' class="info" style="display: none"><%= elm._id %></td>
 			<td contenteditable='true' class="info"><%= elm.nom %></td>
 			<td contenteditable='true' class="info"><%= elm.prenom %></td>
 			<td contenteditable='true' class="info"><%= elm.telephone %></td>
 			<td contenteditable='true' class="info"><%= elm.courriel %></td>
-			<td><a id="save"><i class="far fa-save"></i></a></td>
+			<td><a class="sauver"><i class="far fa-save"></i></a></td>
 			<td><a href="/detruire/<%= elm._id %>"><i class="fas fa-eraser"></i></a></td>
 		</tr>
 	<% } %>
@@ -43,3 +46,37 @@
 		</tr>
 	<% } %>
 </table>
+
+<script type="text/javascript">
+	 let elmSauver = document.querySelectorAll('.sauver')
+	 console.log('elmSauver = ' + elmSauver.length)
+	 for (elm of elmSauver)
+	 {
+		 elm.addEventListener('click', function(){
+		 /* 
+		 console.log(this
+		 .parentNode
+		 .parentNode
+		 .children[1].innerHTML)
+		 */
+		 let laLigne = this.parentNode.parentNode
+		 let id = laLigne.children[0].innerHTML
+		 let nom = laLigne.children[1].innerHTML
+		 let prenom = laLigne.children[2].innerHTML
+		 let telephone = laLigne.children[3].innerHTML
+		 let courriel = laLigne.children[4].innerHTML
+
+		let elmForm = document.getElementById('mon_formulaire')
+		 console.log(elmForm.tagName)
+		 let elmInput = elmForm.querySelectorAll('input')
+		 elmInput[0].value = id
+		 elmInput[1].value = nom
+		 elmInput[2].value = prenom
+		 elmInput[3].value = telephone
+		 elmInput[4].value = courriel
+
+		 elmForm.submit()
+
+	 })
+	 } 
+</script>

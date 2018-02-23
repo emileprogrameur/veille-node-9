@@ -59,8 +59,13 @@ app.get('/trier/:clef/:ordre', (req, res) => {
 })
 
 /*------------------Modifier------------------*/
-app.get('/modifier', (req, res) => {
-	
+app.post('/modifier', (req, res) => {
+	req.body._id = ObjectID(req.body._id)
+ 		db.collection('adresse').save(req.body, (err, result) => { 
+ 			if (err) return console.log(err) 
+ 			console.log('sauvegarder dans la BD') 
+ 			res.redirect('/adresses') 
+ 		})
 })
 
 
