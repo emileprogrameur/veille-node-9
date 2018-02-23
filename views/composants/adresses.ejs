@@ -37,6 +37,7 @@
 				<td contenteditable='true' class="info"><%= elm.courriel %></td>
 				<td><a class="bouton" class="sauver"><i class="far fa-save"></i></a></td>
 				<td><a class="bouton" href="/detruire/<%= elm._id %>"><i class="fas fa-eraser"></i></a></td>
+				<td><a class="bouton" href="/profil/<%= elm._id %>"><i class="fas fa-user"></i></a></td>
 			</tr>
 		<% } %>
 
@@ -51,6 +52,10 @@
 	<section id="utilities">
 		<a id="gen" href="/peupler"><i class="fas fa-address-card"></i></a>
 		<a id="drop" href="/drop"><i class="fas fa-bomb"></i></a>
+		<form id="search">
+			<input type="textarea" placeholder="prenom">
+			<input type="submit" value="search">
+		</form>
 	</section>
 </main>
 

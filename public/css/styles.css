@@ -43,7 +43,7 @@ main {
 }
 
 #utilities {
-	width: 20%;
+	width: 50%;
 	margin-top: 50px;
 	display: flex;
 	justify-content: space-around;
@@ -59,14 +59,18 @@ main {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 40%;
+	width: 20%;
 	transition: width 0.5s, height 0.5s, font-size 0.5s;
 }
 
 #utilities a:hover {
 	font-size: 2.2em;
-	width: 45%;
+	width: 25%;
 	height: 60px;
+}
+
+#search {
+	margin-top: 10px;
 }
 
 form input {

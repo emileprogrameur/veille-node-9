@@ -86,6 +86,24 @@ app.get('/drop', (req, res) => {
 	})
 })
 
+/*---------------profil----------------*/ 
+app.get('/profil/:id', (req, res) => {
+	db.collection('adresse').find( {_id: ObjectID(req.params.id)} ).toArray((err, resultat) => {
+		if (err) return console.log(err)
+		res.render('gabaritProfil.ejs', {adresses: resultat[0]})
+	})
+})
+
+
+/*---------------rechercher----------------*/ 
+app.post('/recherche', (req, res) => {
+
+	db.collection('adresse').find( {prenom: req.body.prenom} ).toArray((err, resultat) => {
+		if (err) return console.log(err)
+		res.render('gabaritAdresses.ejs', {adresses: resultat})
+	})
+})
+
 /*----------------------Connexion à MongoDB et au serveur Node.js-----------------------*/
 let db // variable qui contiendra le lien sur la BD
 MongoClient.connect('mongodb://127.0.0.1:27017/carnet_adresse', (err, database) => {
