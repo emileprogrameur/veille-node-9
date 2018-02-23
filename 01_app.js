@@ -3,7 +3,8 @@ const app = express()
 const fs = require('fs')
 const bodyParser= require('body-parser')
 const MongoClient = require('mongodb').MongoClient
-const ObjectID = require('mongodb').ObjectID;
+const ObjectID = require('mongodb').ObjectID
+const Peupler = require('./public/data/peupler')
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}))
@@ -69,7 +70,13 @@ app.post('/modifier', (req, res) => {
 })
 
 /*------------------Peupler------------------*/
-
+app.get('/peupler', (req, res) => {
+	let resultat = Peupler();
+	db.collection('adresse').insert(resultat, (err, result) => {
+		if (err) return console.log(err);
+		res.redirect('/adresses')
+	})
+})
 
 /*----------------------Connexion à MongoDB et au serveur Node.js-----------------------*/
 let db // variable qui contiendra le lien sur la BD
