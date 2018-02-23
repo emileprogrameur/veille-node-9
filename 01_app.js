@@ -78,6 +78,14 @@ app.get('/peupler', (req, res) => {
 	})
 })
 
+/*------------------¸Drop------------------*/
+app.get('/drop', (req, res) => {
+	db.collection('adresse').drop((err, result) => {
+		if (err) return console.log(err);
+		res.redirect('/adresses')
+	})
+})
+
 /*----------------------Connexion à MongoDB et au serveur Node.js-----------------------*/
 let db // variable qui contiendra le lien sur la BD
 MongoClient.connect('mongodb://127.0.0.1:27017/carnet_adresse', (err, database) => {
