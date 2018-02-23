@@ -15,7 +15,7 @@ nav {
 	justify-content: center;
 }
 
-a {
+.bouton {
 	text-decoration: none;
 	text-align: center;
 	font-weight: 800;
@@ -28,7 +28,7 @@ a {
 	transition: background-color 0.5s, color 0.5s;
 }
 
-a:hover {
+.bouton:hover {
 	background-color: rgba(255, 166, 25, 1);
 	color: black;
 }
@@ -42,14 +42,66 @@ main {
 	align-items: center;
 }
 
-main.img {
-	height: 60%;
-	/*opacity: 0;*/
+#utilities {
+	width: 20%;
+	margin-top: 50px;
+	display: flex;
+	justify-content: space-around;
+}
+
+#utilities a {
+	text-decoration: none;
+	color: white;
+	height: 50px;
+	font-size: 2em;
+	border-bottom-left-radius: 15px;
+	border-top-right-radius: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 40%;
+	transition: width 0.5s, height 0.5s, font-size 0.5s;
+}
+
+#utilities a:hover {
+	font-size: 2.2em;
+	width: 45%;
+	height: 60px;
+}
+
+form input {
+	background-color: #cadbf7;
+	border: none;
+	padding-left: 5px;
+	color: #FF9C00;
+	height: 30px;
+	border-bottom-left-radius: 15px;
+	border-top-right-radius: 15px;
+}
+
+.sub {
+	border-radius: 5px;
+}
+
+::placeholder {
+	color: #FF9C00;
+}
+
+#gen {
+	background: #548e5b;
+}
+
+#drop {
+	background: #7f3e34;
+}
+
+img {
+	opacity: 0;
 	transition: opacity 0.5s;
 }
 
-main.img:hover {
-	opacity: 100;
+img:hover {
+	opacity: 1;
 }
 
 table {

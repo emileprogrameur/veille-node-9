@@ -21,11 +21,11 @@
 				<tr>
 					<% noLigne++ %>
 					<td style="display: none;"><a href="/trier/nom/<%= objTri._id %>">id</a></td>
-					<td class="entete"><a href="/trier/nom/<%= objTri.nom %>">nom</a></td>
-					<td class="entete"><a href="/trier/prenom/<%= objTri.prenom %>">prenom</a></td>
-					<td class="entete"><a href="/trier/telephone/<%= objTri.telephone %>">telephone</a></td>
-					<td class="entete"><a href="/trier/courriel/<%= objTri.courriel %>">courriel</a></td>
-					<td class="entete"><a href="/formulaire"><i class="fas fa-user-plus"></i></i></a></td>
+					<td class="entete"><a class="bouton" href="/trier/nom/<%= objTri.nom %>">nom</a></td>
+					<td class="entete"><a class="bouton" href="/trier/prenom/<%= objTri.prenom %>">prenom</a></td>
+					<td class="entete"><a class="bouton" href="/trier/telephone/<%= objTri.telephone %>">telephone</a></td>
+					<td class="entete"><a class="bouton" href="/trier/courriel/<%= objTri.courriel %>">courriel</a></td>
+					<td class="entete"><a class="bouton" href="/formulaire"><i class="fas fa-user-plus"></i></i></a></td>
 				</tr>
 			<% } %>
 
@@ -35,18 +35,23 @@
 				<td contenteditable='true' class="info"><%= elm.prenom %></td>
 				<td contenteditable='true' class="info"><%= elm.telephone %></td>
 				<td contenteditable='true' class="info"><%= elm.courriel %></td>
-				<td><a class="sauver"><i class="far fa-save"></i></a></td>
-				<td><a href="/detruire/<%= elm._id %>"><i class="fas fa-eraser"></i></a></td>
+				<td><a class="bouton" class="sauver"><i class="far fa-save"></i></a></td>
+				<td><a class="bouton" href="/detruire/<%= elm._id %>"><i class="fas fa-eraser"></i></a></td>
 			</tr>
 		<% } %>
 
 		<% if (adresses.length <= 0) { %>
 			<tr>
 				<td><span>Il n'y a pas de membres inscrit. Voulez vous ajouter un membre ?</span></td>
-				<td><a href="/formulaire"><i class="fas fa-user-plus"></i></i></a></td>
+				<td><a class="bouton" href="/formulaire"><i class="fas fa-user-plus"></i></i></a></td>
 			</tr>
 		<% } %>
 	</table>
+
+	<section id="utilities">
+		<a id="gen" href="/peupler"><i class="fas fa-address-card"></i></a>
+		<a id="drop" href="/drop"><i class="fas fa-bomb"></i></a>
+	</section>
 </main>
 
 <script type="text/javascript">
