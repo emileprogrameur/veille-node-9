@@ -69,8 +69,18 @@
 			console.log(response)
 			console.log("response._id = " + response._id)
 			console.log(xhr.responseText);
- 	}
-}
+ 		}
+	}
+
+	function effacerRequest(e) {
+		console.log("effacer", e.target.ligne);
+		console.log("xhr.readyState = " + xhr.readyState)
+		console.log("xhr.status = " + xhr.status)
+		if(xhr.readyState == 4 && xhr.status == 200) {
+			e.target.ligne.parentNode.removeChild(e.target.ligne)
+			console.log(xhr.responseText);
+ 		}
+	}
 
 	let elmSauver = document.querySelectorAll('.sauver')
 	console.log('elmSauver = ' + elmSauver.length)
@@ -115,8 +125,8 @@
 			sData = JSON.stringify(data);
 			xhr.setRequestHeader('Content-type', 'application/json');
 			xhr.send(sData);
-			laLigne.parentNode.removeChild(laLigne)
-			xhr.addEventListener("readystatechange", traiterRequest, false);
+			xhr.ligne = laLigne;
+			xhr.addEventListener("readystatechange", effacerRequest, false);
 		})
 	}
 </script>

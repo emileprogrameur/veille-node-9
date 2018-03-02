@@ -51,11 +51,11 @@ app.get('/detruire/:id', (req, res) => {
 
 /*------------------Effacer AJAX------------------*/
 app.post('/ajax_detruire', (req, res) => {
-	let id = req.params.id
+	let id = req.body._id
   db.collection('adresse').findOneAndDelete({_id: ObjectID(id)}, (err, resultat) => {
   	if (err) return console.log(err)
   	console.log(id)
-  	res.send(req.body);
+  	res.send("éléement détruit");
   })
 })
 
