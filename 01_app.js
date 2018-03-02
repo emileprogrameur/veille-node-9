@@ -49,6 +49,16 @@ app.get('/detruire/:id', (req, res) => {
   })
 })
 
+/*------------------Effacer AJAX------------------*/
+app.post('/ajax_detruire', (req, res) => {
+	let id = req.params.id
+  db.collection('adresse').findOneAndDelete({_id: ObjectID(id)}, (err, resultat) => {
+  	if (err) return console.log(err)
+  	console.log(id)
+  	res.send(req.body);
+  })
+})
+
 /*------------------Trier------------------*/
 app.get('/trier/:clef/:ordre', (req, res) => {
 	let clef = req.params.clef
