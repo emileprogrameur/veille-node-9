@@ -7,6 +7,7 @@ const ObjectID = require('mongodb').ObjectID
 const Peupler = require('./public/data/peupler')
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
 /*------------------Accueil------------------*/
@@ -67,6 +68,17 @@ app.post('/modifier', (req, res) => {
  			console.log('sauvegarder dans la BD') 
  			res.redirect('/adresses') 
  		})
+})
+
+/*------------------Modifier AJAX------------------*/
+app.post('/ajax_modifier', (req,res) => {
+  req.body._id = ObjectID(req.body._id)
+
+  db.collection('adresse').save(req.body, (err, result) => {
+	  if (err) return console.log(err)
+	  console.log('sauvegarder dans la BD')
+	  res.send(JSON.stringify(req.body));
+  })
 })
 
 /*------------------Peupler------------------*/
